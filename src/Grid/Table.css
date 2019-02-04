@@ -1,0 +1,40 @@
+.ui.segment{
+    height: 80%;
+    align-items: center;
+    position: relative;
+    left: 80px;
+}
+.button{
+    margin-left: auto;
+    order: 2;
+}
+.ReactTable{
+    width: 100%;
+    position: relative;
+   
+}
+.footer-btn{
+    background-color: grey;
+    color: white;
+}
+.ui.active.button{
+    background-color: blue;
+    color: white;
+    left: 280px;
+    top: 10px;
+    position: relative;
+}
+.btn{
+    background-color: blue;
+    color: white;
+    left: 470px;
+    position: relative;
+}
+.modal-content{
+    width: 70%;
+}
+.modal{
+    background-color: transparent;
+    height: 100%;
+
+}
