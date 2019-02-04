@@ -4,6 +4,7 @@ import 'react-table/react-table.css';
 import '../Grid/Table.css';
 import { Button } from 'semantic-ui-react';
 import axios from 'axios';
+import {Redirect} from 'react-router-dom';
 //import Modal from './Modal';
 
 const display = {
@@ -12,7 +13,6 @@ const display = {
   const hide = {
     display: 'none'
   };
-
 
 class Table extends React.Component {
     constructor(props) {
@@ -29,7 +29,7 @@ class Table extends React.Component {
       }
     
       state ={
-        Name: '',
+        name: '',
         department: '',
         amount: '',
         phoneNumber: '',
@@ -40,21 +40,30 @@ class Table extends React.Component {
      };
     
      onSubmit = (event) => {
-       event.preventDefault();
+        event.preventDefault();
        const { Name, Department , Amount, PhoneNumber } = this.state;
+        this.setState({
+        name: '',
+        department: '',
+        amount: '',
+        phoneNumber: '',
+        });
         alert(`SENT: \n 
-                Name: ${this.state.Name} \n 
+                Name: ${this.state.name} \n 
                 Amount: ${this.state.amount} \n
                 PhoneNumber: ${this.state.phoneNumber}`);
      };
-
+    
+    
+  
+      refreshShoeList = res => this.setState({ shoes: res.data.shoes })
      componentDidMount() {
          axios.get('', {responseType: 'json'}).then(response => {this.setState({Table: response.data});
         });
     }
         
     render () {
-
+        
         var visibility = "hide";
      
         if (this.props.menuVisibility) {
@@ -91,15 +100,15 @@ class Table extends React.Component {
         ]
 
         var modal = [];
-    modal.push(
+        modal.push(
       <div className="modal" style={this.state.toggle ? display : hide}>
       <div className="modal-content">
                     <form class="ui small form segment" onSubmit={fields => this.onSubmit(fields)}>
                     <label>Full Names:</label>
 
-                        <input name="Name" 
+                        <input name="name" 
                             placeholder="Name" 
-                            value={this.state.Name} 
+                            value={this.state.name} 
                             onChange={e => this.onChange(e)} />
                         <div style={{fontSize: 8, color: "red"}}>{this.state.nameError}</div>
 
@@ -122,20 +131,20 @@ class Table extends React.Component {
                             onChange={e => this.onChange(e)} />
 
                     <label>Phone Number:</label>
-                        <input name="phoneNumber" type="number" placeholder="Enter Phone number" 
+                        <input name="phoneNumber" type="number" pattern="[0-8]*" inputmode="numeric" placeholder="Enter Phone number" 
                             value={this.state.phoneNumber} 
                             onChange={e => this.onChange(e)} />
                            
                         
                         <br />
                         <button class="ui inverted blue button" onClick={ (e) => this.onSubmit(e)}>Submit</button>
-                        
+
                     </form>
 
                 </div>
 
                     <div className="modal-footer">
-                        <button class="ui button" onClick={this.toggle}>
+                        <button class="ui button" onClick={this.toggle} >
                             close
                         </button>   
                     </div>
