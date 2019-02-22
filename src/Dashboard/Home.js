@@ -13,8 +13,8 @@ class Home extends React. Component {
            <div className="title">Dashboard Information:</div>
         <Segment.Group>
             <Responsive as={Segment}>
-           <div class="row" style={{width: "80%"}}>             
-                <div class="col-sm-4">
+           <div class="row" style={{width: "70%"}}>             
+                <div class="col-sm-1">
                     <div class="info-box bg-red">
                     <span class="info-box-icon"><i class="fa fa-line-chart"></i></span>
                     <div class="info-box-content">
@@ -32,7 +32,7 @@ class Home extends React. Component {
                     </div>
                 </div>
 
-                <div class="col-sm-4">
+                <div class="col-sm-1">
 
                     <div class="info-box bg-green">
                     <span class="info-box-icon"><i class="fa fa-users"></i></span>
@@ -51,7 +51,7 @@ class Home extends React. Component {
                     </div>
                 </div>
 
-                <div class="col-sm-4">
+                <div class="col-sm-1">
 
                     <div class="info-box bg-orange">
                     <span class="info-box-icon"><i class="fa fa-money"></i></span>

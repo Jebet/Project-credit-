@@ -1,40 +1,44 @@
-.ui.segment{
-    height: 80%;
-    align-items: center;
-    position: relative;
-    left: 80px;
-}
-.button{
-    margin-left: auto;
-    order: 2;
-}
-.ReactTable{
+
+form{
     width: 100%;
-    position: relative;
+    border: solid 1px;
+    border-radius: 5px;
+}
+#input1{
+    border-radius: 3px;
+    width: 50px;
+    
+}
+.input-group-addon{
+    padding-left: 10px;
    
 }
-.footer-btn{
-    background-color: grey;
-    color: white;
+#input2{
+    border-radius: 3px;
+   
 }
-.ui.active.button{
-    background-color: blue;
-    color: white;
-    left: 500px;
-    top: 10px;
-    position: relative;
+#input3{
+    border-radius: 3px;
+    width: 100%;
 }
-.btn{
-    background-color: blue;
-    color: white;
-    left: 470px;
-    position: relative;
+#input4{
+    border-radius: 3px;
 }
-.modal-content{
-    width: 70%;
+.btn.btn-default{
+    border-radius: 4px;
+    color: blue;
+    background-color: white;
+    
 }
-.modal{
-    background-color: transparent;
-    height: 100%;
-
+.input-group{
+    width: 50% !important;
+    padding: 10px;
+}
+#Modal{
+    left: 200px;
+    width: 500px;
+}
+.ui.segment {
+    left: 250px; 
+    width: 100%;
 }

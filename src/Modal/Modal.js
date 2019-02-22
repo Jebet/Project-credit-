@@ -1,5 +1,5 @@
 import React from 'react';
-import Form from './Form';
+//-import Form from './Form';
 
 
 const display = {
@@ -30,7 +30,7 @@ class Modal extends React.Component {
     modal.push(
       <div className="modal" style={this.state.toggle ? display : hide}>
       <div className="modal-content">
-        <Form />
+        {/* <Form /> */}
       </div>
       <div className="modal-footer">
         <a className="btn" onClick={this.toggle}>Agree</a>

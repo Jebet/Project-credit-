@@ -2,11 +2,17 @@ import React from 'react';
 import Toolbar from './Toolbar/Toolbar';
 import SideDrawer from './SideDrawer/SideDrawer';
 import Background from './Backdrop/Background';
-import Table from './Grid/Table';
+import Grid from './Grid/Table';
 import {BrowserRouter as Router, Route,Switch} from 'react-router-dom';
 import Modal from './Modal/Modal';
 import Home from './Dashboard/Home';
-//import ReactDOM from 'react-dom';
+import Airtime from './Grid/Table';
+import SliderPage from './Slider/slider';
+import Daily from './Daily/Daily';
+import { Provider } from 'react-redux';
+import store from './store/store';
+
+
 
 class App extends React.Component {
   
@@ -34,8 +40,9 @@ class App extends React.Component {
        }
 
         return (
+            <Provider store={store}>
             <Router>
-            <div style={{height: '100%'}}>
+            <div className="app-container" style={{height: '100%'}}>
                     <Toolbar drawerClickHandler={this.drawerToggleClickHander} />
                     {SideDrawer}
                     {Background}
@@ -46,12 +53,16 @@ class App extends React.Component {
                     <div>
                     <Switch>
                         <Route path="/home" exact component={Home} />
-                        <Route path="/" component={Table} />
-                       
+                        <Route path="/airtime" exact component={Airtime} />
+                        <Route path="/daily" exact component={Daily} />
+                        <Route path="/" component={Grid} />
+                       <Daily />
                     </Switch>
                     </div>
+                   
             </div>
             </Router>
+            </Provider>
         )
     }
 }

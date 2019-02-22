@@ -1,85 +1,105 @@
 import React from 'react';
-//import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-//import SideBar from './SideBar';
-//import './Form.css';
 
-class Form extends React.Component {
-  state ={
-    firstName: '',
-    lastName: '',
-    department: '',
-    amount: '',
-    phoneNumber: '',
-  }
- 
- onChange = (e) => {
-   this.setState({[e.target.name]: e.target.value});
- };
+class Form extends Component {
+	constructor(props){
+		super(props);
+		this.state = {perro:'form-control',input:'Submit',name:'',lname:'',email:'',users:[]};
+	}
+	onSubmit(e){
+		e.preventDefault();
+		if(this.submitInput.value == 'Submit'){
+		const obj = {name:this.state.name,
+					 lname:this.state.lname,
+					 email:this.state.email};
+	this.setState({users:[...this.state.users,obj],name:'',lname:'',email:''});
+		}else 
+			if(this.submitInput.value == 'Edit'){
+				const pos = Number(this.rowRef.value);
+				this.state.users[pos].name = this.inputName.value;
+				this.state.users[pos].lname = this.inputLname.value;
+				this.state.users[pos].email = this.inputEmail.value;
+				this.submitInput.value = 'Submit';
+				this.clearInputs();
+				
+				this.forceUpdate();
+		}
+	}
+	
+	clearInputs(){
+		this.inputName.value = '';
+		this.inputLname.value = '';
+		this.inputEmail.value = '';
+		this.state.name = '';
+		this.state.lname = '';
+		this.state.email = '';
+	}
+	deleteRow(row){
+		var pos = this.state.users.indexOf(row);
+		this.setState({users:this.state.users.slice(0,pos)});
+		this.clearInputs();
+		
+	}	
+editRow(row){
+	var pos = this.state.users.indexOf(row);
+	this.inputName.value = this.state.users[row].name;
+	this.state.name = this.state.users[row].name;
+	this.inputLname.value = this.state.users[row].lname;
+	this.state.lname = this.state.users[row].lname;
+	this.inputEmail.value = this.state.users[row].email;
+	this.state.email = this.state.users[row].email;
+	this.rowRef.value = row;
+	this.state.input = 'Edit';
+	this.forceUpdate();
+	}
+render(){
 
- onSubmit = (event) => {
-   event.preventDefault();
-   const { FirstName, LastName, Department ,Amount, PhoneNumber } = this.state;
-    alert(`You made a transaction to: \n 
-            FirstName: ${this.state.firstName} \n 
-            LastName: ${this.state.lastName} \n 
-            Amount: ${this.state.amount} \n
-            PhoneNumber: ${this.state.phoneNumber}`);
- }
-    render () {
-      var visibility = "hide";
- 
-    if (this.props.menuVisibility) {
-      visibility = "show";
-    }
-      return (
-      <div className="ui-Container" onSubmit={fields => this.onSubmit(fields)}>
-        <div class="ui segment">
-          <form class="ui small form segment">
-          <label>First Name:</label>
+	return(
+		<div className="container">
+			<form className="form-horizontal" role="form" onSubmit={this.onSubmit.bind(this)}>
+				<label>table Data</label>
+				<div className="input-group">
+					<span className="input-group-addon">F</span>
+					<input required type="text" ref={(ref) => this.inputName = ref} onChange={event => this.setState({ name: event.target.value})}  value={this.state.name} className={this.state.perro} placeholder="first name" arial-describedby="basic-addon1"/>
+				</div>
+				<div className="input-group">
+					<span className="input-group-addon">L</span>
+					<input type="text" required ref={(ref) => this.inputLname = ref} onChange={event => this.setState({ lname: event.target.value})} value={this.state.lname} className="form-control"  placeholder="last name" arial-describedby="basic-addon1"/>
+				</div>
+				<div className="input-group">
+					<span className="input-group-addon">@</span>
+					<input type="email" required ref={(ref) => this.inputEmail = ref} onChange={event => this.setState({ email: event.target.value})} value={this.state.email} className="form-control" placeholder="Email" aria-describedby="basic-addon1" />
+				</div>
+				<div className="form-group"> 
+					<div className="col-sm-offset-2 col-sm-10">
+					  <input type="submit"  ref={(ref) => this.submitInput = ref} value={this.state.input} className="btn btn-default"/>
+					</div>
+				</div>
+				
+				<input type="hidden" className="row-ref" value="" ref={(ref) => this.rowRef = ref}/>
+			</form>
+			<div className="container" >	
+				<table className="table table-hover">
+					<thead>
+						<tr>
+							<th>Firstname</th>
+							<th>Lastname</th>
+							<th>Email</th>
+							<th>Options</th>
+						</tr>
+					</thead>
+					<tbody>
+						
+						{this.state.users.map((data,index) => {
+							
+return <Row editRow= {this.editRow.bind(this)} users = {this.state.users}  data = {data} key={index} row={index} deleteRow={this.deleteRow.bind(this)} />
+						})}
+								
+					</tbody>
+				</table>
+			</div>
+		</div>
+	);	
+}
+}
 
-            <input name="firstName" 
-                   placeholder="FirstName" 
-                   value={this.state.firstName} 
-                   onChange={e => this.onChange(e)} />
-            <div style={{fontSize: 8, color: "red"}}>{this.state.nameError}</div>
-
-          <label>Last Name:</label>
-            <input name="lastName" placeholder="LastName" 
-                   value={this.state.lastName} 
-                   onChange={e => this.onChange(e)} />
-                   <div style={{fontSize: 8, color: "red"}}>{this.state.nameError}</div>
-
-          <label>Department:</label>
-            <select name="department" placeholder="Choose your Department" 
-                   value={this.state.department} 
-                   onChange={e => this.onChange(e)} >
-                
-                <option value="">Department</option>
-                <option value="4">Knowledge & Learning</option>
-                <option value="3">Distribution</option>
-                <option value="2">Programmes</option>
-                <option value="1">Finance</option>
-                <option value="0">Digital</option>
-              </select>
-
-          <label>Enter Amount:</label>
-            <input name="amount" type="number" placeholder="Enter amount to send" 
-                   value={this.state.amount} 
-                   onChange={e => this.onChange(e)} />
-
-          <label>Phone Number:</label>
-            <input name="phoneNumber" type="number" placeholder="Enter Phone number" 
-                   value={this.state.phoneNumber} 
-                   onChange={e => this.onChange(e)} />
-                   <div style={{fontSize: 8, color: "red"}}>{this.state.numberError}</div>
-            
-            <br />
-            <button class="ui inverted blue button" onClick={ (e) => this.onSubmit(e)}>Submit</button>
-            
-          </form>
-        </div>
-      </div>
-      );
-    }
-  }
-  export default Form;
+export default Form;
