@@ -20,7 +20,7 @@ const Toolbar = (props) => {
                                 <li><Link to="/home">Dashboard</Link></li>
                                 <li><Link to="/daily">Daily</Link></li>
                                 <li><Link to="/airtime">Airtime</Link></li>
-                                <li><a href="link3">Profile</a></li>
+                                
                             </ul>
                         </div>
                 </div>
