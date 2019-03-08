@@ -1,18 +1,27 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:400, 300);
 
 form {
-  max-width: 50%;
+  max-width: 48%;
   position: relative;
   left: 200px;
   border-radius: 5px;
   border-bottom: 6px solid purple;
   background-color: white;
   border-top: solid 6px purple;
-  padding-left: 20px;
+  padding-left: 40px;
   margin: 0 auto;
-  
 }
-
+.dailyform {
+  max-width: 50%;
+  position: relative;
+  left: 150px;
+  border-radius: 5px;
+  border-bottom: 6px solid purple;
+  background-color: white;
+  border-top: solid 6px purple;
+  padding-left: 30px;
+  margin: 0 auto;
+}
 .field {
   display: block;
   margin-bottom: 0.5rem;

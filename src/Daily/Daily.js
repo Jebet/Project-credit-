@@ -17,7 +17,11 @@ class Daily extends React.Component {
     return (
       <div className="cont">
         <div className="col-md-12">
-          <Form model="user" onSubmit={v => console.log(v)}>
+          <Form
+            model="user"
+            onSubmit={v => console.log(v)}
+            className="dailyform"
+          >
             <div className="col-md-6">
               <div className="field">
                 <label>Name:</label>
