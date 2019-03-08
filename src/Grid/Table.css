@@ -1,44 +1,105 @@
+label {
+  font-weight: normal;
+  margin-top: 15px;
+}
+.name {
+  right: 88px;
+}
+.phone {
+  right: 76px;
+}
+.amount {
+  right: 80px;
+}
+.department {
+  right: 72px;
+}
+input {
+  border: 2px solid #ccc !important;
+  height: 35px;
+  border-radius: 3px;
+  max-width: 100%;
+}
+.btn-default {
+  color: white;
+  background-color: gold;
+  border: gold;
+  right: 18px;
+}
 
-form{
+.input-group-addon {
+  border: 2px solid #ccc !important;
+  border-right: 0px !important;
+}
+
+.btn {
+  border: 0;
+  border-radius: 3px;
+  margin-top: 20px;
+}
+.form-horizontal {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.form-group {
+  margin-bottom: 0;
+  text-align: left;
+  height: 70px;
+  left: 18px;
+}
+#searchBar {
+  width: 30%;
+  border-radius: 3px;
+  left: 200px;
+  top: -20px;
+}
+.form-horizontal {
+  background-color: lightgrey;
+  border-radius: 2px;
+  width: 500px;
+  height: 480px;
+  padding: 10px;
+  margin: 0 auto;
+  left: 0;
+}
+.wrapper {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 30px 0;
+  outline: 1pt;
+  border-radius: 2px solid grey;
+}
+#Alert {
+}
+.fa-user-plus {
+  padding-right: 10px;
+}
+.fa-upload {
+  display: flex;
+  flex-direction: row;
+  left: 400px;
+  top: -40px;
+  width: 30px;
+}
+
+select {
+  border: 2px solid #ccc !important;
+  height: 35px;
+  border-radius: 3px;
+  max-width: 100%;
+}
+.input-group {
+  height: 90px;
+}
+@media (max-width: 800px) {
+  #searchBar {
     width: 100%;
-    border: solid 1px;
-    border-radius: 5px;
-}
-#input1{
-    border-radius: 3px;
-    width: 50px;
-    
-}
-.input-group-addon{
-    padding-left: 10px;
-   
-}
-#input2{
-    border-radius: 3px;
-   
-}
-#input3{
-    border-radius: 3px;
+    position: relative;
+  }
+  .form-horizontal {
     width: 100%;
-}
-#input4{
-    border-radius: 3px;
-}
-.btn.btn-default{
-    border-radius: 4px;
-    color: blue;
-    background-color: white;
-    
-}
-.input-group{
-    width: 50% !important;
-    padding: 10px;
-}
-#Modal{
-    left: 200px;
-    width: 500px;
-}
-.ui.segment {
-    left: 250px; 
-    width: 100%;
+  }
 }
