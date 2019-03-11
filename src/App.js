@@ -7,7 +7,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // import Modal from "./Modal/Modal";
 import Home from "./Dashboard/Home";
 import Airtime from "./Grid/Table";
-import SliderPage from "./Slider/slider";
 import Daily from "./Daily/Daily";
 import { Provider } from "react-redux";
 import store from "./store/store";
